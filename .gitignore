@@ -4,7 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 src/main/resources/application.properties
-djangoapp/ecomdjango/ecomdjango/settings.py
+DjangoApp/ecomdjango/ecomdjango/settings.py
 
 ### STS ###
 .apt_generated
