@@ -36,7 +36,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
 	{
 		http.csrf().disable()
-		.authorizeHttpRequests().requestMatchers("/","/register","/signin","/saveUser").permitAll()
+		.authorizeHttpRequests().requestMatchers("/","/register","/signin","/saveUser","/woocommerce/**").permitAll()
 		.requestMatchers("/user/**").authenticated().and().addFilterBefore(new CustomFilter(), UsernamePasswordAuthenticationFilter.class)
 		.formLogin().loginPage("/signin").loginProcessingUrl("/userLogin")
 		//.usernameParameter("email")
