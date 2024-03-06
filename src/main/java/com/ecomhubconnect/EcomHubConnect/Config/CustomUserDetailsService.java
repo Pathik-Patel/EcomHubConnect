@@ -2,6 +2,7 @@ package com.ecomhubconnect.EcomHubConnect.Config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,14 +21,19 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-		Users user = userRepo.findByEmail(username);
-		System.out.println(user);
-		if (user == null) {
-			throw new UsernameNotFoundException("user not found");
-		} else {
-			return new CustomUser(user);
-		}
+		
+		System.out.println(username);
+		Users user = userRepo.findByEmail(username).orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));;
+		UserDetails userDetails =
+                org.springframework.security.core.userdetails.User.builder()
+                        .username(user.getEmail())
+                        .password(user.getPassword())
+                        .roles("USER")
+                        .build();
+		
+		
+		return userDetails;
+		
 
 	}
 

@@ -1,10 +1,10 @@
 import './App.css';
-import Login from './Login';
+import Login from './Components/Login';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Register from './Register';
-import Logout from './Logout';
-import Home from './Home';
+import Register from './Components/Register';
+import Logout from './Components/Logout';
+import Home from './Components/Home';
 function App() {
   return (
     <Router>

@@ -4,14 +4,15 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.ecomhubconnect.EcomHubConnect.Config.AppException;
 import com.ecomhubconnect.EcomHubConnect.Entity.Orders;
 import com.ecomhubconnect.EcomHubConnect.Entity.Stores;
 import com.ecomhubconnect.EcomHubConnect.Entity.Users;
@@ -39,7 +40,7 @@ public class WoocommerceService {
         
         if (authentication != null && authentication.isAuthenticated()) {            
             
-            Users user = usersRepository.findByEmail(authentication.getName());
+            Users user = usersRepository.findByEmail(authentication.getName()).orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));;
             if (user != null) {
             	 Stores store = new Stores();
                  store.setDomain(domain);
