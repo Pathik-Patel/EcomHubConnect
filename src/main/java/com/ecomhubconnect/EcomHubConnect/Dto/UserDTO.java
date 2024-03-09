@@ -17,9 +17,5 @@ public class UserDTO {
 	private String mobile;
 	private String password;
 	private String active;
-    private String token;
-	
-	
-	
 	
 }

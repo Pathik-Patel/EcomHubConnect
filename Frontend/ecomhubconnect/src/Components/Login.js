@@ -18,14 +18,13 @@ const Login = () => {
     const submit = (e) => {
 
         e.preventDefault();
-
-        UserService.createUser(formData)
+        UserService.login(formData)
         .then(response => {
-            console.log('User created:', response);
+            // console.log('User created:', response);
             // Do something with the response if needed
         })
         .catch(error => {
-            console.error('Error creating user:', error);
+            // console.error('Error creating user:', error);
             // Handle error
         });
         

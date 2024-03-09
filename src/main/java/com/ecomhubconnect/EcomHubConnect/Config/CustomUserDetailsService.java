@@ -20,9 +20,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private UserRepository userRepo;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public CustomUser loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		System.out.println(username);
+//		System.out.println(username);
 		Users user = userRepo.findByEmail(username).orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));;
 		UserDetails userDetails =
                 org.springframework.security.core.userdetails.User.builder()
@@ -31,8 +31,8 @@ public class CustomUserDetailsService implements UserDetailsService {
                         .roles("USER")
                         .build();
 		
-		
-		return userDetails;
+		CustomUser customUser = new CustomUser(user);
+		return customUser;
 		
 
 	}

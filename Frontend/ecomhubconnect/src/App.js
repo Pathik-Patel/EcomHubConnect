@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './Components/Register';
 import Logout from './Components/Logout';
 import Home from './Components/Home';
+import StoresForm from './Components/StoresForm';
+
 function App() {
   return (
     <Router>
@@ -23,6 +25,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/home" element={<Home/>} />
+        </Routes>
+        <Routes>
+          <Route path="/addstore" element={<StoresForm/>} />
         </Routes>
         
       </div>

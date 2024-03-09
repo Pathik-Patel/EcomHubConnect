@@ -33,8 +33,10 @@ public class WoocommerceController {
 	@PostMapping("/addstore")
     public String home(@RequestBody Map<String, Object> connection_credentials, HttpSession session, Model m) {
 		        
-		wooCommerceService.addstore(connection_credentials.get("consumerKey").toString(), connection_credentials.get("domain").toString(),  connection_credentials.get("secretConsumerKey").toString());
-
+		wooCommerceService.addstore(connection_credentials.get("consumerKey").toString(), connection_credentials.get("domain").toString(),  connection_credentials.get("consumerSecret").toString());
+//		System.out.println(connection_credentials.get("consumerSecret").toString());
+//		System.out.println( connection_credentials.get("domain").toString());
+//		System.out.println(connection_credentials.get("consumerKey").toString());
         return "Received Data";
     }
 	

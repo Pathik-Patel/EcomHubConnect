@@ -30,7 +30,7 @@ public class Users{
 	private String mobile;
 	private String password;
 	private String active;
-	private String role;
+	private String role;	
     
 	
 	 // Define the one-to-many relationship with Stores
