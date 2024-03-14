@@ -4,6 +4,8 @@ const UserService = {
 
     login: async (credentials) => {
 
+        // return "successful";
+
         const response = await fetch('http://localhost:8080/login', {
             method: "POST",
             mode: 'cors',
@@ -19,10 +21,15 @@ const UserService = {
             } else {
                 throw new Error('Network response was not ok');
             }
+
+
         }
         try {
             const responseData = await response.json();
-            localStorage.setItem('sessionId', responseData.sessionid);
+            sessionStorage.setItem('sessionId', responseData.sessionid);
+            sessionStorage.setItem('loggedinUserEmail', responseData.username);
+            sessionStorage.setItem('loggedinUserFirstName', responseData.firstname);
+            
             console.log("Login Successful");
         }
         catch {
@@ -31,7 +38,7 @@ const UserService = {
     },
 
     LogoutUser: async () => {
-        const sessionId = window.localStorage.getItem('sessionId');
+        const sessionId = sessionStorage.getItem('sessionId');
         const response = await fetch('http://localhost:8080/logout', {
             method: "GET",
             mode: 'cors',
@@ -46,10 +53,13 @@ const UserService = {
         try {
             const responseBody = await response.text();
             if (responseBody === 'Logout successful') {
-                // Handle successful logout
+                
                 console.log('Logout successful');
-                // Clear session ID from local storage or perform any other cleanup
-                localStorage.removeItem('sessionId');
+                
+                sessionStorage.removeItem('sessionId');
+                sessionStorage.removeItem('loggedinUserEmail');
+                sessionStorage.removeItem('loggedinUserFirstName');
+                
             } else {
                 // Handle logout error
                 throw new Error('Logout failed');
@@ -61,7 +71,7 @@ const UserService = {
     },
 
     userdetails: async () => {
-        const sessionId = window.localStorage.getItem('sessionId');
+        const sessionId = sessionStorage.getItem('sessionId');
         const response = await fetch('http://localhost:8080/userdetails', {
             method: "GET",
             mode: 'cors',
@@ -85,6 +95,53 @@ const UserService = {
             } catch (error) {
                 throw new Error('Error parsing JSON response');
             }
+        } else {
+            // Parse text response
+            try {
+                const responseText = await response.text();
+                console.log('Text Response:', responseText);
+                // Handle text response data here
+            } catch (error) {
+                throw new Error('Error parsing text response');
+            }
+        }
+    },
+
+
+    stores: async () => {
+        const sessionId = sessionStorage.getItem('sessionId');
+        const response = await fetch('http://localhost:8080/woocommerce/stores', {
+            method: "GET",
+            mode: 'cors',
+            headers: {
+                'AUTHORIZATION': sessionId
+            },
+        });
+    
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+    
+        // Check the content type of the response
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            // Parse JSON response
+            try {
+                const responseData = await response.json();
+                console.log('JSON Response:', responseData);
+                return responseData;
+                // Handle JSON response data here
+            } catch (error) {
+                console.error('Error parsing JSON response:', error);
+                throw new Error('Error parsing JSON response');
+            }
+            // try {
+            //     const responseText = await response.text();
+            //     console.log('Text Response:', responseText);
+            //     // Handle text response data here
+            // } catch (error) {
+            //     throw new Error('Error parsing text response');
+            // }   
         } else {
             // Parse text response
             try {

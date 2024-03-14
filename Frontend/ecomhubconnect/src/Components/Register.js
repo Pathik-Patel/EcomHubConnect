@@ -26,20 +26,20 @@ function Register() {
         e.preventDefault();
         
         try {
-            // const response = await fetch('http://localhost:8080/saveUser', {
-            //     method: "POST",
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify(formData)
-            // });
+            const response = await fetch('http://localhost:8080/saveUser', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
 
-            // if (!response.ok) {
-            //     throw new Error('Network response was not ok');
-            // }
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
-            // const responseData = await response.text(); // Assuming response body is text
-            const responseData = 'Register successfully'
+            const responseData = await response.text(); // Assuming response body is text
+            // const responseData = 'Register successfully'
             console.log('Response:', responseData);
 
             // Check the response message

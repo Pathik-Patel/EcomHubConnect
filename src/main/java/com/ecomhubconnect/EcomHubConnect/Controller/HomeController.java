@@ -104,9 +104,10 @@ public class HomeController {
 	@PostMapping("/login")
     public ResponseEntity<?> login(HttpServletRequest request, HttpServletResponse response, @RequestBody CredentialsDTO loginRequest) {
 		
-        
+        	
+		try {
+			
         	UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
-
         	Optional<Users> userOptional = userRepo.findByEmail(loginRequest.getUsername());
         	if (!userOptional.isPresent()) {
 
@@ -114,19 +115,25 @@ public class HomeController {
                 responsed.put("Message", "User not found");
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         	}
-        	
-            Authentication authentication = authenticationManager.authenticate(authRequest);
+        	Authentication authentication = authenticationManager.authenticate(authRequest);
             SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
             securityContext.setAuthentication(authentication);
             SecurityContextHolder.setContext(securityContext);
             securityContextRepository.saveContext(securityContext, request, response);
-        
             final String sessionId = sessionRegistry.registerSession(loginRequest.getUsername());
+            
             ResponseDTO responsed = new ResponseDTO();
             responsed.setSessionid(sessionId);
+            Users user = userOptional.get();
+            responsed.setUsername(user.getEmail());
+            responsed.setFirstname(user.getFirstname());
             System.out.println(userOptional);
             return ResponseEntity.ok(responsed);
-        
+
+		}
+		catch (Exception e){
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+		}
     }
 
 	@PostMapping("/saveUser")

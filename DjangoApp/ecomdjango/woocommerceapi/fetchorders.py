@@ -221,7 +221,7 @@ def callll(request):
     #               }
     #           ]
     # return JsonResponse({"reply":data})
-    return JsonResponse({"reply":woocommerce_orders(client_data["domain"],client_data["consumerKey"], client_data["secretConsumerKey"],"NotFound","v3")},safe=False)
+    return JsonResponse({"reply":woocommerce_orders(client_data["domain"],client_data["consumerKey"], client_data["secretConsumerKey"],client_data["lastModifiedDate"],"v3")},safe=False)
      
 
 def woocommerce_orders(domain, consumerkey, consumersecretkey,max_date, woocommerce_version):
@@ -237,7 +237,7 @@ def woocommerce_orders(domain, consumerkey, consumersecretkey,max_date, woocomme
         timeout=1000
     )
 
-    if(max_date == "NotFound"):
+    if(max_date == "Not Found"):
         
             obj = wcapi.get("orders", params={"per_page": 100})
     else:

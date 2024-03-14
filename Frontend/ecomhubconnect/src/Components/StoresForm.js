@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Nav from './Nav';
 const StoresForm = () => {
   const [formData, setFormData] = useState({
     domain: '',
@@ -17,12 +17,12 @@ const StoresForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const sessionId = window.localStorage.getItem('sessionId');
+      const sessionId = sessionStorage.getItem('sessionId');
       const response = await fetch('http://localhost:8080/woocommerce/addstore', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'AUTHORIZATION': sessionId
+          'AUTHORIZATION': sessionId    
         },
         body: JSON.stringify(formData)
       });
@@ -40,7 +40,9 @@ const StoresForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <Nav/>
+      <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="domain">Domain:</label>
         <input
@@ -76,6 +78,8 @@ const StoresForm = () => {
       </div>
       <button type="submit">Submit</button>
     </form>
+    </div>
+    
   );
 };
 

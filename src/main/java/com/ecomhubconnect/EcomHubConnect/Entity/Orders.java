@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -31,7 +32,9 @@ public class Orders {
 	private String paymentMethod;
 	private String product;
 	private String orderCreatedDate;
+	private String lastmodifiedDate;
 	
+	@ToString.Exclude
 	@ManyToOne
     private Stores store;
 }
