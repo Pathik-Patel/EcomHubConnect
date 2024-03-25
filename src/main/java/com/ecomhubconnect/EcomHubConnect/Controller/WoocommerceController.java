@@ -28,73 +28,72 @@ import com.ecomhubconnect.EcomHubConnect.Service.WoocommerceService;
 
 import jakarta.servlet.http.HttpSession;
 
-
 @RestController
 @CrossOrigin
 @RequestMapping("/woocommerce")
 public class WoocommerceController {
-	
+
 	private WoocommerceService wooCommerceService;
-	
+
 	@Autowired
 	private StoreRepository storeRepository;
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
-    public WoocommerceController(WoocommerceService wooCommerceService) {
-        this.wooCommerceService = wooCommerceService;
-    }
-	
+	public WoocommerceController(WoocommerceService wooCommerceService) {
+		this.wooCommerceService = wooCommerceService;
+	}
+
 	@PostMapping("/addstore")
-    public ResponseEntity<String> home(@RequestBody Map<String, Object> connection_credentials, HttpSession session, Model m) {
-		        
-		wooCommerceService.addstore(connection_credentials.get("consumerKey").toString(), connection_credentials.get("domain").toString(),  connection_credentials.get("consumerSecret").toString());
-//		System.out.println(connection_credentials.get("consumerSecret").toString());
-//		System.out.println( connection_credentials.get("domain").toString());
-//		System.out.println(connection_credentials.get("consumerKey").toString());
-		return ResponseEntity.ok("Received Data");
-    }
+	public ResponseEntity<String> home(@RequestBody Map<String, Object> connection_credentials, HttpSession session,
+			Model m) {
 	
+		wooCommerceService.addstore(connection_credentials.get("consumerKey").toString(),
+				connection_credentials.get("domain").toString(),
+				connection_credentials.get("consumerSecret").toString());
+
+		return ResponseEntity.ok("Received Data");
+	}
+
 	@GetMapping("/store/{storeid}")
 	public String getstore(@PathVariable int storeid) {
 		return "Store";
-		
+
 	}
-	
+
 	@GetMapping("/stores")
-    public ResponseEntity<?> getUserString() {
+	public ResponseEntity<?> getUserString() {
 		Users user;
 		System.out.println("Came Into User Details");
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();       
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println(authentication.getName());
-		
-		
-        if (authentication != null && authentication.isAuthenticated()) {            
-            user = userRepo.findByEmail(authentication.getName()).orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));;
-            if (user != null) {
-            	
-            	List<Stores> userStores = storeRepository.findByUser(user);
 
-                return ResponseEntity.ok(userStores);
-            	// Assuming you have implemented the toString method in Stores entity to print necessary store details
-//                return ResponseEntity.ok(user.getStores());
-            } else {
-                return ResponseEntity.notFound().build();
-            }
-            
-        }
-        Map<String, String> response = new HashMap<>();
-        response.put("Message", "User not found");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-        
-    }
-	
+		if (authentication != null && authentication.isAuthenticated()) {
+			user = userRepo.findByEmail(authentication.getName())
+					.orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
+			;
+			if (user != null) {
+
+				List<Stores> userStores = storeRepository.findByUser(user);
+
+				return ResponseEntity.ok(userStores);
+			} else {
+				return ResponseEntity.notFound().build();
+			}
+
+		}
+		Map<String, String> response = new HashMap<>();
+		response.put("Message", "User not found");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+
+	}
+
 	@GetMapping("/syncorders/{storeid}")
 	public String syncorders(@PathVariable int storeid) {
-		
-		wooCommerceService.fetchOrders(storeid);
+
+		wooCommerceService.syncOrders(storeid);
 		return "Succesful";
 	}
 }

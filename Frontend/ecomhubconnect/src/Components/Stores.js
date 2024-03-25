@@ -6,6 +6,7 @@ const Stores = () => {
 
     const [storesData, setStoresData] = useState(null);
   const [error, setError] = useState(null);
+  const [responseData, setResponseData] = useState(null);
 
     let loggedinUser;
   try{
@@ -19,6 +20,19 @@ const Stores = () => {
     fetchStores();
   }, []);
 
+  // const handleClick = async (storeid) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:8080/woocommerce/syncorders/${storeid}`);
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch data');
+  //     }
+  //     const data = await response.text();
+  //     setResponseData(data);
+  //   } catch (error) {
+  //     setError(error);
+  //   }
+  // };
+
 
   const fetchStores = () => {
     UserService.stores()
@@ -30,6 +44,16 @@ const Stores = () => {
       });
   };
   
+
+  const handleClick = (storeid) => {
+    UserService.syncorders(storeid)
+      .then((response) => {
+        setStoresData(response);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  };
  
  
         return (
@@ -39,8 +63,8 @@ const Stores = () => {
               {storesData ? (
                 <div>
                   {storesData.map((store) => (
-                    <div key={store.storeid}>
-                      <p>{store.domain}</p>
+                    <div key={store.storeid} >
+                      <p onClick={() => handleClick(store.storeid)} >{store.domain}</p>
                       {/* Render other store details here */}
                     </div>
                   ))}

@@ -241,7 +241,8 @@ def woocommerce_orders(domain, consumerkey, consumersecretkey,max_date, woocomme
         
             obj = wcapi.get("orders", params={"per_page": 100})
     else:
-        obj = wcapi.get("orders", params={"per_page": 100, "after":max_date})
+        print(max_date)
+        obj = wcapi.get("orders", params={"per_page": 100, "modified_after":max_date})
 
     obj = json.loads(obj.text)
     print(obj)

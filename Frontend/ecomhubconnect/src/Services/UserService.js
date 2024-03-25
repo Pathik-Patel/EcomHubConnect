@@ -152,6 +152,52 @@ const UserService = {
                 throw new Error('Error parsing text response');
             }
         }
+    },
+
+    syncorders: async (storeid) => {
+        const sessionId = sessionStorage.getItem('sessionId');
+        const response = await fetch(`http://localhost:8080/woocommerce/syncorders/${storeid}`, {
+            method: "GET",
+            mode: 'cors',
+            headers: {
+                'AUTHORIZATION': sessionId
+            },
+        });
+    
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+    
+        // Check the content type of the response
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            // Parse JSON response
+            try {
+                const responseData = await response.json();
+                console.log('JSON Response:', responseData);
+                return responseData;
+                // Handle JSON response data here
+            } catch (error) {
+                console.error('Error parsing JSON response:', error);
+                throw new Error('Error parsing JSON response');
+            }
+            // try {
+            //     const responseText = await response.text();
+            //     console.log('Text Response:', responseText);
+            //     // Handle text response data here
+            // } catch (error) {
+            //     throw new Error('Error parsing text response');
+            // }   
+        } else {
+            // Parse text response
+            try {
+                const responseText = await response.text();
+                console.log('Text Response:', responseText);
+                // Handle text response data here
+            } catch (error) {
+                throw new Error('Error parsing text response');
+            }
+        }
     }
 }
 
