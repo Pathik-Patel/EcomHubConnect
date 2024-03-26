@@ -1,38 +1,17 @@
 import Nav from "./Nav";
 import UserService from "../Services/UserService";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./../Styles/stores.css"; // Import CSS file
 
 const Stores = () => {
-
-    const [storesData, setStoresData] = useState(null);
+  const [storesData, setStoresData] = useState(null);
   const [error, setError] = useState(null);
-  const [responseData, setResponseData] = useState(null);
-
-    let loggedinUser;
-  try{
-    loggedinUser = sessionStorage.getItem('loggedinUserFirstName');
-  }
-  catch{
-    loggedinUser = false;
-  }
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchStores();
   }, []);
-
-  // const handleClick = async (storeid) => {
-  //   try {
-  //     const response = await fetch(`http://localhost:8080/woocommerce/syncorders/${storeid}`);
-  //     if (!response.ok) {
-  //       throw new Error('Failed to fetch data');
-  //     }
-  //     const data = await response.text();
-  //     setResponseData(data);
-  //   } catch (error) {
-  //     setError(error);
-  //   }
-  // };
-
 
   const fetchStores = () => {
     UserService.stores()
@@ -43,40 +22,50 @@ const Stores = () => {
         setError(error);
       });
   };
-  
 
   const handleClick = (storeid) => {
     UserService.syncorders(storeid)
       .then((response) => {
-        setStoresData(response);
+        navigate('/orders', { state: { orders: response } });
       })
       .catch((error) => {
         setError(error);
       });
   };
- 
- 
-        return (
-            <div>
-              <Nav />
-              <p>My Stores</p>
-              {storesData ? (
-                <div>
-                  {storesData.map((store) => (
-                    <div key={store.storeid} >
-                      <p onClick={() => handleClick(store.storeid)} >{store.domain}</p>
-                      {/* Render other store details here */}
-                    </div>
-                  ))}
+
+  // Function to handle edit button click
+  const handleEdit = (storeid) => {
+    // Add functionality for edit button here
+    console.log("Edit clicked for store ID:", storeid);
+  };
+
+  return (
+    <div>
+      <Nav />
+      <div className="stores-container">
+        <h2>My Stores</h2>
+        {storesData ? (
+          <div className="stores-list">
+            {storesData.map((store) => (
+              <div key={store.storeid} className="store-item">
+                <div className="store-details store-clickable" onClick={() => handleClick(store.storeid)}>
+                  <p className="store-domain">{store.domain}</p>
+                  {/* Edit button */}
+                  <button className="edit-button" onClick={() => handleEdit(store.storeid)}>Edit</button>
                 </div>
-              ) : error ? (
-                <p>Error: {error.message}</p>
-              ) : (
-                <p>Loading...</p>
-              )}
-            </div>
-          );
-     
-}
- 
+                {/* Clicking on store item also triggers navigation */}
+                
+              </div>
+            ))}
+          </div>
+        ) : error ? (
+          <p>Error: {error.message}</p>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export default Stores;

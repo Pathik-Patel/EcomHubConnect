@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Nav from './Nav';
 import { useNavigate } from "react-router-dom";
+import './../Styles/Register.css'; // Import CSS file
+
 function Register() {
 
     const navigate = useNavigate();
-
 
     const [formData, setFormData] = useState({
         firstname: '',
@@ -39,29 +40,19 @@ function Register() {
             }
 
             const responseData = await response.text(); // Assuming response body is text
-            // const responseData = 'Register successfully'
-            console.log('Response:', responseData);
 
             // Check the response message
             if (responseData === 'Register successfully') {
-
-                const confirmed = window.confirm('Registration successful. Proceed to home page?');
+                const confirmed = window.confirm('Registration successful. Proceed to My Stores page?');
                 if (confirmed) {
-                    console.log('Registration successful');
-                     navigate('/home');
+                    navigate('/mystores');
                 }
                 // Registration was successful
-                
                 // Handle success
             } else {
                 // Registration failed
-                console.log('Registration failed');
                 // Handle failure
             }
-
-            // const responseData = await response.json();
-            // console.log('Response:', responseData);
-            // Handle response data as needed
 
         } catch (error) {
             console.error('Error:', error.message);
@@ -70,39 +61,37 @@ function Register() {
     };
 
     return (
-       
         <div>
-             <Nav/>
+            <Nav />
+<div className="register-container">
+            
             <h2>Register</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="register-form">
                 <label>
                     First Name:
                     <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} />
                 </label>
-                <br />
                 <label>
                     Last Name:
                     <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} />
                 </label>
-                <br />
                 <label>
                     Email:
                     <input type="email" name="email" value={formData.email} onChange={handleChange} />
                 </label>
-                <br />
                 <label>
                     Mobile:
                     <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} />
                 </label>
-                <br />
                 <label>
                     Password:
                     <input type="password" name="password" value={formData.password} onChange={handleChange} />
                 </label>
-                <br />
                 <button type="submit">Submit</button>
             </form>
         </div>
+        </div>
+        
     );
 }
 

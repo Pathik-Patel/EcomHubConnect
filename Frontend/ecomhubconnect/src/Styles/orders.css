@@ -1,0 +1,42 @@
+/* Orders.css */
+.orders-container {
+    margin: 20px;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.orders-table th, .orders-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.orders-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.orders-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.orders-table tbody tr:hover {
+    background-color: #e2e2e2;
+}
+
+.orders-table td {
+    border-top: 1px solid #ddd;
+}
+
+.orders-table td:last-child {
+    text-align: center;
+}
+
+.orders-table td:first-child {
+    padding-left: 20px;
+}

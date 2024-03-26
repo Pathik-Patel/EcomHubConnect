@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Nav from './Nav';
+import './../Styles/storesform.css'; // Import the CSS file
+
 const StoresForm = () => {
   const [formData, setFormData] = useState({
     domain: '',
@@ -42,44 +44,45 @@ const StoresForm = () => {
   return (
     <div>
       <Nav/>
-      <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="domain">Domain:</label>
-        <input
-          type="text"
-          id="domain"
-          name="domain"
-          value={formData.domain}
-          onChange={handleChange}
-          required
-        />
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="domain">Domain:</label>
+            <input
+              type="text"
+              id="domain"
+              name="domain"
+              value={formData.domain}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="consumerKey">Consumer Key:</label>
+            <input
+              type="text"
+              id="consumerKey"
+              name="consumerKey"
+              value={formData.consumerKey}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="consumerSecret">Consumer Secret:</label>
+            <input
+              type="text"
+              id="consumerSecret"
+              name="consumerSecret"
+              value={formData.consumerSecret}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
       </div>
-      <div>
-        <label htmlFor="consumerKey">Consumer Key:</label>
-        <input
-          type="text"
-          id="consumerKey"
-          name="consumerKey"
-          value={formData.consumerKey}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="consumerSecret">Consumer Secret:</label>
-        <input
-          type="text"
-          id="consumerSecret"
-          name="consumerSecret"
-          value={formData.consumerSecret}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
     </div>
-    
   );
 };
 

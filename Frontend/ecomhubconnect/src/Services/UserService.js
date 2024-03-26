@@ -1,6 +1,8 @@
 import ApiBoilerPlateService from "./ApiBoilerPlateService";
+import { useNavigate } from 'react-router-dom';
 
 const UserService = {
+    
 
     login: async (credentials) => {
 
@@ -156,6 +158,7 @@ const UserService = {
 
     syncorders: async (storeid) => {
         const sessionId = sessionStorage.getItem('sessionId');
+        // const navigate = useNavigate();
         const response = await fetch(`http://localhost:8080/woocommerce/syncorders/${storeid}`, {
             method: "GET",
             mode: 'cors',
@@ -174,7 +177,17 @@ const UserService = {
             // Parse JSON response
             try {
                 const responseData = await response.json();
-                console.log('JSON Response:', responseData);
+                return responseData;
+                // navigate('/orders', { state: { orders: responseData } });
+                // return { orders: responseData };
+                // // console.log('JSON Response:', responseData);
+                // responseData.forEach(order => {
+                //     // Access order properties and display or process them as needed
+                //     console.log('Order ID:', order.orderid);
+                //     console.log('Customer Name:', order.customerName);
+                //     console.log('Total:', order.total);
+                //     // etc.
+                // });
                 return responseData;
                 // Handle JSON response data here
             } catch (error) {

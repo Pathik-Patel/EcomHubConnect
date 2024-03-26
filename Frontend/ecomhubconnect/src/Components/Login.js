@@ -1,25 +1,24 @@
 import Nav from "./Nav";
 import { useState } from "react";
 import UserService from "../Services/UserService";
-import $ from 'jquery';
 import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import './../Styles/login.css'; // Import CSS file
+
 const Login = () => {
-
     const [show, setShow] = useState(false);
-  const [modalTitle, setModalTitle] = useState('');
-  const navigate = useNavigate();
-  const [redirectToHome, setRedirectToHome] = useState(false); // Define redirectToHome state
-  
+    const [modalTitle, setModalTitle] = useState('');
+    const navigate = useNavigate();
+    const [redirectToHome, setRedirectToHome] = useState(false);
 
-  
-  const handleClose = () => {
-    setShow(false);
-    if (redirectToHome) {
-        navigate('/home');
-    }
-  };
-  const handleShow = () => setShow(true);
+    const handleClose = () => {
+        setShow(false);
+        if (redirectToHome) {
+            navigate('/mystores');
+        }
+    };
+
+    const handleShow = () => setShow(true);
 
     const [formData, setFormData] = useState({
         username: '',
@@ -34,51 +33,49 @@ const Login = () => {
     };
 
     const submit = (e) => {
-
         e.preventDefault();
         UserService.login(formData)
             .then(response => {
                 setModalTitle('Login Successful');
-        handleShow();
-        setRedirectToHome(true);
-                // console.log('User created:', response);
-                // Do something with the response if needed
+                handleShow();
+                setRedirectToHome(true);
             })
             .catch(error => {
                 setModalTitle('Login Failed');
-        handleShow();
-                // console.error('Error creating user:', error);
-                // Handle error
+                handleShow();
             });
-
     }
+
+    const handleForgotPassword = () => {
+        // Add functionality for forgot password here
+        console.log("Forgot Password clicked");
+    };
     
     return (
-
         <div>
             <Nav />
-            <form onSubmit={submit}>
-                <input name="username" type="text" value={formData.username} onChange={handleChange} />
-                <input name="password" type="password" value={formData.password} onChange={handleChange} />
-                <button type="submit">Submit</button>
-            </form>
+            <div className="login-container">
+                <form onSubmit={submit}>
+                    <input name="username" type="text" value={formData.username} onChange={handleChange} placeholder="Username" />
+                    <input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+                    <button type="submit">Submit</button>
+                </form>
+                <div className="forgot-password">
+                    <span onClick={handleForgotPassword}>Forgot Password?</span>
+                </div>
 
-            {/* <Button variant="primary" onClick={submit}>
-        Click modal
-      </Button> */}
-<Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{modalTitle}</Modal.Title>
-        </Modal.Header>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Okay
-          </Button>
-        </Modal.Footer>
-      </Modal>
- 
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{modalTitle}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={handleClose}>
+                            Okay
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div>
         </div>
-
     );
 }
 

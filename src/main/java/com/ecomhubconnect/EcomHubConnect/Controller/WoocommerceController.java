@@ -3,6 +3,7 @@ package com.ecomhubconnect.EcomHubConnect.Controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecomhubconnect.EcomHubConnect.Config.AppException;
+import com.ecomhubconnect.EcomHubConnect.Entity.Orders;
 import com.ecomhubconnect.EcomHubConnect.Entity.Stores;
 import com.ecomhubconnect.EcomHubConnect.Entity.Users;
+import com.ecomhubconnect.EcomHubConnect.Repo.OrderRepository;
 import com.ecomhubconnect.EcomHubConnect.Repo.StoreRepository;
 import com.ecomhubconnect.EcomHubConnect.Repo.UserRepository;
 import com.ecomhubconnect.EcomHubConnect.Service.WoocommerceService;
@@ -40,6 +43,9 @@ public class WoocommerceController {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private OrderRepository orderRepository;
 
 	@Autowired
 	public WoocommerceController(WoocommerceService wooCommerceService) {
@@ -91,9 +97,17 @@ public class WoocommerceController {
 	}
 
 	@GetMapping("/syncorders/{storeid}")
-	public String syncorders(@PathVariable int storeid) {
+	public ResponseEntity<?> syncorders(@PathVariable int storeid) {
 
 		wooCommerceService.syncOrders(storeid);
-		return "Succesful";
+		Stores userStore = storeRepository.findById(storeid).orElseThrow(() -> new AppException("No Stores for this ID", HttpStatus.NOT_FOUND));;;
+		List<Orders> orders = orderRepository.findByStore(userStore);
+		System.out.println(orders);
+		if (orders.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No orders found for store " + storeid);
+        } else {
+            return ResponseEntity.ok(orders);
+        }
+		
 	}
 }
