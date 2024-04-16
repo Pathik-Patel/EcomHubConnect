@@ -9,6 +9,8 @@ One of the standout features is the predictive analytics module. Leveraging mach
 
 To create this project, I have used React for frontend, Spring Boot Java for Backend, Python for forecasting part, and SQL server for database. I have used complex queries as well as database indexing for faster retrieval of data. For the security purpose, i am using Spring Security. 
 
+![IMG_6469](https://github.com/Pathik-Patel/EcomHubConnect/assets/66346167/e18c0213-c3b0-428a-a0e5-07fbf58f24a5)
+
 Here is the Link for Demo: https://drive.google.com/file/d/1jmDfRnos5x61IEhfScNAivRss1EwC-m5/view
 
 Thanks. 
