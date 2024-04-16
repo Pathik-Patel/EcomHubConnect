@@ -1,6 +1,8 @@
 package com.ecomhubconnect.EcomHubConnect.Service;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.ecomhubconnect.EcomHubConnect.Config.AppException;
+import com.ecomhubconnect.EcomHubConnect.Entity.OrderedProducts;
 import com.ecomhubconnect.EcomHubConnect.Entity.Orders;
 import com.ecomhubconnect.EcomHubConnect.Entity.Stores;
 import com.ecomhubconnect.EcomHubConnect.Entity.Users;
 import com.ecomhubconnect.EcomHubConnect.Repo.OrderRepository;
+import com.ecomhubconnect.EcomHubConnect.Repo.OrderedProductsRepository;
 import com.ecomhubconnect.EcomHubConnect.Repo.StoreRepository;
 import com.ecomhubconnect.EcomHubConnect.Repo.UserRepository;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -35,7 +39,10 @@ public class WoocommerceService {
 	@Autowired
 	private OrderRepository orderRepository;
 
-	public String addstore(String consumerKey, String domain, String secretConsumerKey) {
+	@Autowired
+	private OrderedProductsRepository orderedProductsRepository;
+
+	public String addstore(String consumerKey, String domain, String secretConsumerKey, String storename) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		if (authentication != null && authentication.isAuthenticated()) {
@@ -48,6 +55,7 @@ public class WoocommerceService {
 				store.setDomain(domain);
 				store.setConsumerKey(consumerKey);
 				store.setConsumerSecretKey(secretConsumerKey);
+				store.setStorename(storename);
 				store.setUser(user);
 
 				storesRepository.save(store);
@@ -74,18 +82,19 @@ public class WoocommerceService {
 			return;
 		}
 
-			Optional<Orders> latestOrderOptional = orderRepository.findFirstByStoreOrderByLastmodifiedDateDesc(store);
+		Optional<Orders> latestOrderOptional = orderRepository.findFirstByStoreOrderByLastmodifiedDateDesc(store);
 		System.out.println(latestOrderOptional);
 		String lastModifiedDateStr = null;
-
+		LocalDateTime lastModifiedDate = null;
 		if (latestOrderOptional.isPresent()) {
 			Orders latestOrder = latestOrderOptional.get();
-			lastModifiedDateStr = latestOrder.getLastmodifiedDate();
+
+			if (latestOrder.getLastmodifiedDate() != null) {
+
+				lastModifiedDate = latestOrder.getLastmodifiedDate().toLocalDateTime();
+			}
 		}
-		LocalDateTime lastModifiedDate = null;
-		if (lastModifiedDateStr != null) {
-			lastModifiedDate = LocalDateTime.parse(lastModifiedDateStr);
-		}
+
 		String url = "http://127.0.0.1:8000/hello";
 		WebClient webClient = WebClient.builder().baseUrl(url)
 				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).build();
@@ -102,6 +111,7 @@ public class WoocommerceService {
 				.bodyToMono(String.class).block();
 
 		System.out.println(jsonResponse);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -112,7 +122,9 @@ public class WoocommerceService {
 				for (JsonNode orderNode : orders) {
 					int orderId = orderNode.get("id").asInt();
 
-					LocalDateTime orderModifiedDate = LocalDateTime.parse(orderNode.get("date_modified").asText());
+					LocalDateTime ModifieddateTime = LocalDateTime.parse(orderNode.get("date_modified").asText(),
+							formatter);
+					Timestamp lastmodifiedtimestamp = Timestamp.valueOf(ModifieddateTime);
 
 					Orders existingOrder = orderRepository.findByOrderidAndStore(orderId, store).orElse(null);
 
@@ -120,8 +132,16 @@ public class WoocommerceService {
 						System.out.println(orderId);
 						if (existingOrder.getLastmodifiedDate() != null) {
 							System.out.println(orderId);
-							if (orderModifiedDate.isAfter(LocalDateTime.parse(existingOrder.getLastmodifiedDate()))) {
+							if (lastmodifiedtimestamp.compareTo(existingOrder.getLastmodifiedDate()) > 0) {
 								System.out.println(orderId);
+
+								LocalDateTime NewCreateddateTime = LocalDateTime
+										.parse(orderNode.get("date_created").asText(), formatter);
+								Timestamp newcreatetimestamp = Timestamp.valueOf(NewCreateddateTime);
+
+								LocalDateTime NewModifieddateTime = LocalDateTime
+										.parse(orderNode.get("date_modified").asText(), formatter);
+								Timestamp newlastmodifiedtimestamp = Timestamp.valueOf(NewModifieddateTime);
 
 								existingOrder.setCustomerName(orderNode.get("billing").get("first_name").asText());
 								existingOrder.setEmail(orderNode.get("billing").get("email").asText());
@@ -136,8 +156,8 @@ public class WoocommerceService {
 								existingOrder.setCurrency(orderNode.get("currency").asText());
 								existingOrder.setPaymentMethod(orderNode.get("payment_method").asText());
 								existingOrder.setProduct(orderNode.get("line_items").get(0).get("name").asText());
-								existingOrder.setOrderCreatedDate(orderNode.get("date_created").asText());
-								existingOrder.setLastmodifiedDate(orderNode.get("date_modified").asText());
+								existingOrder.setOrderCreatedDate(newcreatetimestamp);
+								existingOrder.setLastmodifiedDate(newlastmodifiedtimestamp);
 								// Update other fields similarly
 
 								orderRepository.save(existingOrder);
@@ -146,6 +166,15 @@ public class WoocommerceService {
 						}
 					} else {
 						Orders order = new Orders();
+
+						LocalDateTime CreateddateTime = LocalDateTime.parse(orderNode.get("date_created").asText(),
+								formatter);
+						Timestamp createtimestamp = Timestamp.valueOf(CreateddateTime);
+
+						LocalDateTime toStoreModifieddateTime = LocalDateTime
+								.parse(orderNode.get("date_modified").asText(), formatter);
+						Timestamp tostorelastmodifiedtimestamp = Timestamp.valueOf(toStoreModifieddateTime);
+
 						order.setOrderid(orderNode.get("id").asInt());
 						order.setStore(store);
 						order.setCustomerName(orderNode.get("billing").get("first_name").asText());
@@ -161,11 +190,30 @@ public class WoocommerceService {
 						order.setCurrency(orderNode.get("currency").asText());
 						order.setPaymentMethod(orderNode.get("payment_method").asText());
 						order.setProduct(orderNode.get("line_items").get(0).get("name").asText());
-						order.setOrderCreatedDate(orderNode.get("date_created").asText());
-						order.setLastmodifiedDate(orderNode.get("date_modified").asText());
+						order.setOrderCreatedDate(createtimestamp);
+						order.setLastmodifiedDate(tostorelastmodifiedtimestamp);
 
 						orderRepository.save(order);
 
+						JsonNode products = orderNode.get("line_items");
+
+						if (products != null && products.isArray()) {
+
+							for (JsonNode productNode : products) {
+								OrderedProducts product = new OrderedProducts();
+								int productId = productNode.get("product_id").asInt();
+								product.setOrder(order);
+								product.setOrderCreatedDate(order.getOrderCreatedDate());
+								product.setOrderStatus(order.getStatus());
+								product.setProductid(productId);
+								product.setProductName(productNode.get("name").asText());
+								product.setStore(store);
+								product.setPrice(productNode.get("price").asInt());
+								product.setQuantity(productNode.get("quantity").asInt());
+								orderedProductsRepository.save(product);
+								orderedProductsRepository.save(product);
+							}
+						}
 					}
 
 				}

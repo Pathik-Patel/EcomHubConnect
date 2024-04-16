@@ -1,12 +1,19 @@
 package com.ecomhubconnect.EcomHubConnect.Controller;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,17 +26,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.ecomhubconnect.EcomHubConnect.Config.AppException;
+import com.ecomhubconnect.EcomHubConnect.Entity.OrderedProducts;
 import com.ecomhubconnect.EcomHubConnect.Entity.Orders;
 import com.ecomhubconnect.EcomHubConnect.Entity.Stores;
 import com.ecomhubconnect.EcomHubConnect.Entity.Users;
 import com.ecomhubconnect.EcomHubConnect.Repo.OrderRepository;
+import com.ecomhubconnect.EcomHubConnect.Repo.OrderedProductsRepository;
 import com.ecomhubconnect.EcomHubConnect.Repo.StoreRepository;
 import com.ecomhubconnect.EcomHubConnect.Repo.UserRepository;
+import com.ecomhubconnect.EcomHubConnect.Service.InsightsService;
 import com.ecomhubconnect.EcomHubConnect.Service.WoocommerceService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.http.HttpSession;
+import reactor.core.publisher.Mono;
 
 @RestController
 @CrossOrigin
@@ -37,6 +54,8 @@ import jakarta.servlet.http.HttpSession;
 public class WoocommerceController {
 
 	private WoocommerceService wooCommerceService;
+	
+	private InsightsService insightsService;
 
 	@Autowired
 	private StoreRepository storeRepository;
@@ -46,10 +65,14 @@ public class WoocommerceController {
 	
 	@Autowired
 	private OrderRepository orderRepository;
+	
+	@Autowired
+    private OrderedProductsRepository orderedProductsRepository;
 
 	@Autowired
-	public WoocommerceController(WoocommerceService wooCommerceService) {
+	public WoocommerceController(WoocommerceService wooCommerceService, InsightsService insightsService) {
 		this.wooCommerceService = wooCommerceService;
+		this.insightsService = insightsService;
 	}
 
 	@PostMapping("/addstore")
@@ -58,7 +81,7 @@ public class WoocommerceController {
 	
 		wooCommerceService.addstore(connection_credentials.get("consumerKey").toString(),
 				connection_credentials.get("domain").toString(),
-				connection_credentials.get("consumerSecret").toString());
+				connection_credentials.get("consumerSecret").toString(),connection_credentials.get("storename").toString());
 
 		return ResponseEntity.ok("Received Data");
 	}
@@ -71,6 +94,9 @@ public class WoocommerceController {
 
 	@GetMapping("/stores")
 	public ResponseEntity<?> getUserString() {
+		
+			
+		
 		Users user;
 		System.out.println("Came Into User Details");
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -96,9 +122,41 @@ public class WoocommerceController {
 
 	}
 
+	@GetMapping("/getforecasting/{storeid}")
+	public Mono<ResponseEntity<String>> getforecasting(@PathVariable int storeid) {
+	    List<Object> tempList = orderRepository.findTotalAndOrderCreatedAtByStoreid(storeid);
+	    
+	    String url = "http://127.0.0.1:8000/getforecasting";
+	    WebClient webClient = WebClient.builder().baseUrl(url)
+	            .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).build();
+
+	    ObjectMapper objectMapper = new ObjectMapper();
+
+	    // Convert the list of JSON objects to a JSON array
+	    try {
+	        String jsonArrayString = objectMapper.writeValueAsString(tempList);
+	        return webClient.post()
+	                .body(BodyInserters.fromValue(jsonArrayString))
+	                .retrieve()
+	                .toEntity(String.class)
+	                .map(responseEntity -> {
+	                    String responseBody = responseEntity.getBody();
+	                    // Handle the response if needed
+	                    System.out.println("Response received: " + responseBody);
+	                    return ResponseEntity.ok(responseBody);
+	                });
+	    } catch (Exception e) {
+	        // Handle exception
+	        e.printStackTrace();
+	        // Return an error response
+	        return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
+	    }
+	}
+
+	
 	@GetMapping("/syncorders/{storeid}")
 	public ResponseEntity<?> syncorders(@PathVariable int storeid) {
-
+		
 		wooCommerceService.syncOrders(storeid);
 		Stores userStore = storeRepository.findById(storeid).orElseThrow(() -> new AppException("No Stores for this ID", HttpStatus.NOT_FOUND));;;
 		List<Orders> orders = orderRepository.findByStore(userStore);
@@ -110,4 +168,77 @@ public class WoocommerceController {
         }
 		
 	}
+	
+	@PostMapping("/insights/{storeid}")
+    public ResponseEntity<?> getInsightsOfStore(@PathVariable int storeid, @RequestBody String dateRange) {
+		
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+
+        // Convert JSON string to JSON object
+		 JsonNode dates;
+		try {
+			dates = objectMapper.readTree(dateRange);
+		
+		
+		LocalDate startDate = LocalDate.parse(dates.get("startdate").asText());
+        LocalDateTime startOfDay = startDate.atStartOfDay();
+        Timestamp startdateTimestamp =  Timestamp.valueOf(startOfDay);
+        
+        LocalDate endDate = LocalDate.parse(dates.get("enddate").asText());
+        LocalDateTime endOfDay = endDate.atTime(23, 59, 59, 999999999);
+        Timestamp enddateTimestamp =  Timestamp.valueOf(endOfDay);
+        
+        System.out.println(startdateTimestamp);
+        System.out.println(enddateTimestamp);
+		
+		
+		String topfiveproducts = insightsService.gettopfiveproductsforgivenstore(storeid, startdateTimestamp, enddateTimestamp);
+		
+		
+		
+		Map<String, Object> totalordersandsale = orderRepository.getTotalOrdersAndSale(storeid, startdateTimestamp, enddateTimestamp);
+		
+		
+		
+		List<Object[]> topfivestatesList = orderRepository.findTop5StatesByOrderCount(storeid, startdateTimestamp, enddateTimestamp);
+		
+		
+		
+		for (Object[] stateData : topfivestatesList) {
+		    String state = (String) stateData[0]; // State
+		    Long stateCount = (Long) stateData[1]; // State count
+		    Double totalOrdersCount = (Double) stateData[3]; // Total orders count
+
+		    // Print state along with its values
+		    System.out.println("State: " + state);
+		    System.out.println("State Count: " + stateCount);
+		    System.out.println("Total Orders Count: " + totalOrdersCount);
+		}
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    
+	    // Create a map to represent your data
+	    Map<String, Object> responseData = new HashMap<>();
+	    responseData.put("topfiveproducts", topfiveproducts);
+	    responseData.put("totalordersandsale", totalordersandsale);
+	    responseData.put("topfivestatesList", topfivestatesList);
+	    
+	    try {
+	        // Convert the map to a JSON string
+	        String jsonResponse = mapper.writeValueAsString(responseData);
+	        return ResponseEntity.ok(jsonResponse);
+	        
+	    } catch (JsonProcessingException e) {
+	        // Handle JSON processing exception
+	        e.printStackTrace();
+	        return null;
+	    }
+
+		
+		}
+		catch (JsonProcessingException e){
+			return null;
+		}
+    }
 }

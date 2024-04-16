@@ -3,12 +3,56 @@ import json
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser 
-
+import pandas as pd
+from datetime import datetime
+from statsmodels.tsa.statespace.sarimax import SARIMAX
 @api_view(['GET', 'POST', 'DELETE'])
 def callll(request):
     client_data = JSONParser().parse(request)
     return JsonResponse({"reply":woocommerce_orders(client_data["domain"],client_data["consumerKey"], client_data["secretConsumerKey"],client_data["lastModifiedDate"],"v3")},safe=False)
      
+@api_view(['GET', 'POST', 'DELETE'])
+def getforecasting(request):
+    client_data = JSONParser().parse(request)
+
+    for each in client_data:
+         each['orderCreatedAt'] = datetime.fromtimestamp(each['orderCreatedAt'] / 1000.0)
+
+    df = pd.DataFrame(client_data)
+
+# Convert 'orderCreatedAt' column to datetime
+    
+    df['orderCreatedAt'] = pd.to_datetime(df['orderCreatedAt'])
+
+    # Convert 'total' column to numeric
+    df['total'] = pd.to_numeric(df['total'])
+
+    # Set 'orderCreatedAt' as index
+    df.set_index('orderCreatedAt', inplace=True)
+
+    monthly_sales = df['total'].resample('M').sum()
+
+    print(monthly_sales)
+
+    model = SARIMAX(monthly_sales, order=(1, 0, 0), seasonal_order=(1, 0, 0, 12))
+    model_fit = model.fit()
+
+    forecast = model_fit.forecast(steps=12)
+
+    # print(client_data)
+    print("Forecasted Sales:")
+    print(forecast)
+
+    last_month = monthly_sales.index[-1].month
+    forecast_months = [(last_month + i) % 12 or 12 for i in range(1, 13)]
+
+    # Create a list of dictionaries containing month and sales
+    forecast_data = [{'month': month, 'sales': sales} for month, sales in zip(forecast_months, forecast)]
+
+    # Convert list of dictionaries to JSON
+    forecast_json = json.dumps(forecast_data)
+    
+    return JsonResponse({"reply":forecast_json})
 
 def woocommerce_orders(domain, consumerkey, consumersecretkey,max_date, woocommerce_version):
     wcapi = API(

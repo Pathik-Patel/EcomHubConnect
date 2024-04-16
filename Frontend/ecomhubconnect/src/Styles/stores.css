@@ -6,12 +6,12 @@
 
 .stores-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 20px;
 }
 
 .store-item {
-  background-color: #f4f4f4;
+  background-color: #fff;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
@@ -19,6 +19,7 @@
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Align items vertically */
   justify-content: space-between; /* Distribute items along the main axis */
+
 }
 
 .store-item:hover {
@@ -28,6 +29,8 @@
 .store-details {
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Align items vertically */
+  width: 100%;
+  justify-content: space-between;
 }
 
 .store-domain {

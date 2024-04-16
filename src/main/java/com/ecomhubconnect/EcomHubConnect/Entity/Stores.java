@@ -32,6 +32,7 @@ public class Stores {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int storeid;
 	
+	private String storename;
 	private String domain;
 	private String consumerKey;
 	private String consumerSecretKey;

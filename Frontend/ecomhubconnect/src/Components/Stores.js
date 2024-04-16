@@ -24,9 +24,20 @@ const Stores = () => {
   };
 
   const handleClick = (storeid) => {
+
+    // UserService.storeinsightss(storeid)
+    // .then((response) => {
+    //   console.log(response);
+    //   // navigate('/orders', { state: { orders: response } });
+    // })
+    // .catch((error) => {
+    //   setError(error);
+    // });
+
     UserService.syncorders(storeid)
       .then((response) => {
-        navigate('/orders', { state: { orders: response } });
+        console.log(response.storeid);
+        navigate('/orders', { state: { orders: response , storeid: response.storeid} });
       })
       .catch((error) => {
         setError(error);
@@ -49,7 +60,7 @@ const Stores = () => {
             {storesData.map((store) => (
               <div key={store.storeid} className="store-item">
                 <div className="store-details store-clickable" onClick={() => handleClick(store.storeid)}>
-                  <p className="store-domain">{store.domain}</p>
+                  <p className="store-domain">{store.storename}</p>
                   {/* Edit button */}
                   <button className="edit-button" onClick={() => handleEdit(store.storeid)}>Edit</button>
                 </div>

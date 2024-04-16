@@ -16,7 +16,7 @@ const UserService = {
             },
             body: JSON.stringify(credentials)
         });
-        console.log(response);
+        // console.log(response);
         if (!response.ok) {
             if (response.status === 404) {
                 throw new Error('User not found');
@@ -32,7 +32,7 @@ const UserService = {
             sessionStorage.setItem('loggedinUserEmail', responseData.username);
             sessionStorage.setItem('loggedinUserFirstName', responseData.firstname);
             
-            console.log("Login Successful");
+            // console.log("Login Successful");
         }
         catch {
             return response;
@@ -48,7 +48,7 @@ const UserService = {
                 'AUTHORIZATION': sessionId
             },
         });
-        console.log(response);
+        // console.log(response);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -56,7 +56,7 @@ const UserService = {
             const responseBody = await response.text();
             if (responseBody === 'Logout successful') {
                 
-                console.log('Logout successful');
+                // console.log('Logout successful');
                 
                 sessionStorage.removeItem('sessionId');
                 sessionStorage.removeItem('loggedinUserEmail');
@@ -92,7 +92,7 @@ const UserService = {
             // Parse JSON response
             try {
                 const responseData = await response.json();
-                console.log('JSON Response:', responseData);
+                // console.log('JSON Response:', responseData);
                 // Handle JSON response data here
             } catch (error) {
                 throw new Error('Error parsing JSON response');
@@ -101,7 +101,7 @@ const UserService = {
             // Parse text response
             try {
                 const responseText = await response.text();
-                console.log('Text Response:', responseText);
+                // console.log('Text Response:', responseText);
                 // Handle text response data here
             } catch (error) {
                 throw new Error('Error parsing text response');
@@ -130,11 +130,11 @@ const UserService = {
             // Parse JSON response
             try {
                 const responseData = await response.json();
-                console.log('JSON Response:', responseData);
+                // console.log('JSON Response:', responseData);
                 return responseData;
                 // Handle JSON response data here
             } catch (error) {
-                console.error('Error parsing JSON response:', error);
+                // console.error('Error parsing JSON response:', error);
                 throw new Error('Error parsing JSON response');
             }
             // try {
@@ -148,7 +148,7 @@ const UserService = {
             // Parse text response
             try {
                 const responseText = await response.text();
-                console.log('Text Response:', responseText);
+                // console.log('Text Response:', responseText);
                 // Handle text response data here
             } catch (error) {
                 throw new Error('Error parsing text response');
@@ -177,6 +177,8 @@ const UserService = {
             // Parse JSON response
             try {
                 const responseData = await response.json();
+                responseData.storeid = storeid;
+                // console.log(responseData.storeid);
                 return responseData;
                 // navigate('/orders', { state: { orders: responseData } });
                 // return { orders: responseData };
@@ -191,7 +193,7 @@ const UserService = {
                 return responseData;
                 // Handle JSON response data here
             } catch (error) {
-                console.error('Error parsing JSON response:', error);
+                // console.error('Error parsing JSON response:', error);
                 throw new Error('Error parsing JSON response');
             }
             // try {
@@ -205,7 +207,95 @@ const UserService = {
             // Parse text response
             try {
                 const responseText = await response.text();
+                // console.log('Text Response:', responseText);
+                // Handle text response data here
+            } catch (error) {
+                throw new Error('Error parsing text response');
+            }
+        }
+    },
+    storeinsightss: async (storeid, dateRange) => {
+        const sessionId = sessionStorage.getItem('sessionId');
+        // const navigate = useNavigate();
+        const response = await fetch(`http://localhost:8080/woocommerce/insights/${storeid}`, {
+            method: "POST",
+            mode: 'cors',
+            headers: {
+                'AUTHORIZATION': sessionId
+            },
+            body: JSON.stringify(dateRange)
+        });
+    
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+    
+        // Check the content type of the response
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            // Parse JSON response
+            try {
+                const responseData = await response.json();
+                
+                return responseData;
+                
+                
+                // Handle JSON response data here
+            } catch (error) {
+                // console.error('Error parsing JSON response:', error);
+                throw new Error('Error parsing JSON response');
+            }
+             
+        } else {
+            // Parse text response
+            try {
+                const responseText = await response.text();
+                // console.log('Text Response:', responseText);
+                return responseText;
+                // Handle text response data here
+            } catch (error) {
+                throw new Error('Error parsing text response');
+            }
+        }
+    },
+    storeforecasting: async (storeid) => {
+        const sessionId = sessionStorage.getItem('sessionId');
+        // const navigate = useNavigate();
+        const response = await fetch(`http://localhost:8080/woocommerce/getforecasting/${storeid}`, {
+            method: "GET",
+            mode: 'cors',
+            headers: {
+                'AUTHORIZATION': sessionId
+            },
+            // body: JSON.stringify(dateRange)
+        });
+    
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+    
+        // Check the content type of the response
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            // Parse JSON response
+            try {
+                const responseData = await response.json();
+                console.log(responseData);
+                return responseData;
+                
+                
+                // Handle JSON response data here
+            } catch (error) {
+                // console.error('Error parsing JSON response:', error);
+                throw new Error('Error parsing JSON response');
+            }
+             
+        } else {
+            // Parse text response
+            try {
+                const responseText = await response.text();
                 console.log('Text Response:', responseText);
+                return responseText;
                 // Handle text response data here
             } catch (error) {
                 throw new Error('Error parsing text response');

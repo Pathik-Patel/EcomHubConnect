@@ -16,37 +16,29 @@ import lombok.ToString;
 
 @Entity
 @Data
-public class Orders {
+public class OrderedProducts {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int orderid;
-	private int storeid;
-	private String customerName;
-	private String email;
-	private String phone;
-	private String address;
-	private String city;
-	private String state;
-	private String country;
-	private String postcode;
-	private String total;
-	private String status;
-	private String currency;
-	private String paymentMethod;
-	private String product;
+	private int quantity;
+	private int price;
+	private int productid;
+	private String productName;
+	private String orderStatus;
+	
 	@Temporal(TemporalType.TIMESTAMP)
     private Timestamp orderCreatedDate;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp lastmodifiedDate;
+
 	
 	@ToString.Exclude
 	@ManyToOne
 	@JsonIgnore
     private Stores store;
+	
+	@ToString.Exclude
+	@ManyToOne
+	@JsonIgnore
+    private Orders order;
+	
 }
-
-
-

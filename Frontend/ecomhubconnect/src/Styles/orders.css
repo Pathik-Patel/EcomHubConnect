@@ -40,3 +40,96 @@
 .orders-table td:first-child {
     padding-left: 20px;
 }
+
+.product-carousel, .state-carousel{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.insights{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.insights div{
+    background-color: #fff;
+    border-radius: 1vw;
+    
+}
+
+.insights h2{
+    margin-top: 1vw;
+    
+}
+
+
+.totalordersandsales{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.carousel-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2vw;
+
+}
+
+.icon-holder{
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-around;
+    padding: 2vw;
+}
+
+.totalorders, .totalsales{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.prev-button, .next-button{
+    background-color: transparent;
+    color: black;
+}
+
+.prev-button:hover, .next-button:hover{
+    background-color: transparent;
+    color: rgb(205, 198, 198);
+}
+
+h2{
+    font-size: 2vw !important;
+}
+.totalorders h2, .totalsales h2, .totalorders p, .totalsales p{
+    width: 100%;
+    text-align: center;
+    
+}
+
+.front-label, .totalorders p, .totalsales p{
+    color: rgb(92, 89, 89);
+}
+.ordersheading{
+    margin-top: 1vw;
+}
+#forecasting{
+    height: 50% !important;
+    width: 70% !important;
+}
+
+
+.forecastbutton{
+    border-radius: 1vw;
+    float: inline-end;
+    margin-bottom: 1vw;
+}

@@ -6,7 +6,8 @@ const StoresForm = () => {
   const [formData, setFormData] = useState({
     domain: '',
     consumerKey: '',
-    consumerSecret: ''
+    consumerSecret: '',
+    storename:''
   });
 
   const handleChange = (e) => {
@@ -46,6 +47,17 @@ const StoresForm = () => {
       <Nav/>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
+        <div>
+            <label htmlFor="domain">Name of Store:</label>
+            <input
+              type="text"
+              id="storename"
+              name="storename"
+              value={formData.storename}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <div>
             <label htmlFor="domain">Domain:</label>
             <input
