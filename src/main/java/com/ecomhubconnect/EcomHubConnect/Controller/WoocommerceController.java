@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -52,6 +54,9 @@ import reactor.core.publisher.Mono;
 @CrossOrigin
 @RequestMapping("/woocommerce")
 public class WoocommerceController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(WoocommerceController.class);
+	
 
 	private WoocommerceService wooCommerceService;
 	
@@ -156,6 +161,8 @@ public class WoocommerceController {
 	
 	@GetMapping("/syncorders/{storeid}")
 	public ResponseEntity<?> syncorders(@PathVariable int storeid) {
+		
+		logger.info("Came into Woocommerce Controller");
 		
 		wooCommerceService.syncOrders(storeid);
 		Stores userStore = storeRepository.findById(storeid).orElseThrow(() -> new AppException("No Stores for this ID", HttpStatus.NOT_FOUND));;;

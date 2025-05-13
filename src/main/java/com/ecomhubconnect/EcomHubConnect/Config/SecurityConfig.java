@@ -76,7 +76,7 @@ public class SecurityConfig {
 		                    	System.out.println(request.getHeader(HttpHeaders.AUTHORIZATION));
 		                    	inMemorySessionRegistry.removeSession(request.getHeader(HttpHeaders.AUTHORIZATION));
 //		                    	System.out.println("User logged out: " + authentication.getName());
-		                    	response.setStatus(HttpServletResponse.SC_OK);
+		                     	response.setStatus(HttpServletResponse.SC_OK);
 		                        response.getWriter().write("Logout successful");
 		                    }
 		                });

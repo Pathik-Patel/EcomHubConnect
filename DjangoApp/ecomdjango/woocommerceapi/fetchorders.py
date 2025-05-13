@@ -6,9 +6,18 @@ from rest_framework.parsers import JSONParser
 import pandas as pd
 from datetime import datetime
 from statsmodels.tsa.statespace.sarimax import SARIMAX
+from opentelemetry.trace import get_current_span
+
 @api_view(['GET', 'POST', 'DELETE'])
 def callll(request):
+    print("traceparent:", request.headers.get("traceparent"))
+    span = get_current_span()
+    trace_id = format(span.get_span_context().trace_id, '032x')
+    span_id = format(span.get_span_context().span_id, '016x')
+
+    print(f"[TraceID: {trace_id}] [SpanID: {span_id}] Django received request")
     client_data = JSONParser().parse(request)
+    print(client_data)
     return JsonResponse({"reply":woocommerce_orders(client_data["domain"],client_data["consumerKey"], client_data["secretConsumerKey"],client_data["lastModifiedDate"],"v3")},safe=False)
      
 @api_view(['GET', 'POST', 'DELETE'])
@@ -20,7 +29,7 @@ def getforecasting(request):
 
     df = pd.DataFrame(client_data)
 
-# Convert 'orderCreatedAt' column to datetime
+# Convert 'orderCreatedAt' column to datetimebin
     
     df['orderCreatedAt'] = pd.to_datetime(df['orderCreatedAt'])
 
@@ -67,6 +76,7 @@ def woocommerce_orders(domain, consumerkey, consumersecretkey,max_date, woocomme
 
     if(max_date == "Not Found"):
             obj = wcapi.get("orders", params={"per_page": 100})
+            print(obj)
     else:
         print(max_date)
         obj = wcapi.get("orders", params={"per_page": 100, "modified_after":max_date})

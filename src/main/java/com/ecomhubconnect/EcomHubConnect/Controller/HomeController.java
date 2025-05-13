@@ -4,63 +4,46 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.client.ExchangeStrategies;
-import org.springframework.web.reactive.function.client.WebClient;
-
 import com.ecomhubconnect.EcomHubConnect.Config.AppException;
-import com.ecomhubconnect.EcomHubConnect.Config.CustomUserDetailsService;
 import com.ecomhubconnect.EcomHubConnect.Dto.CredentialsDTO;
 import com.ecomhubconnect.EcomHubConnect.Dto.ResponseDTO;
-import com.ecomhubconnect.EcomHubConnect.Dto.UserDTO;
-import com.ecomhubconnect.EcomHubConnect.Entity.Stores;
 //import com.ecomhubconnect.EcomHubConnect.Entity.User;
 import com.ecomhubconnect.EcomHubConnect.Entity.Users;
 import com.ecomhubconnect.EcomHubConnect.Repo.UserRepository;
 import com.ecomhubconnect.EcomHubConnect.Service.UserService;
-import com.ecomhubconnect.EcomHubConnect.Service.UserService;
-import com.ecomhubconnect.EcomHubConnect.Service.WoocommerceService;
 import com.ecomhubconnect.EcomHubConnect.Session.InMemorySessionRegistry;
 
-import java.io.Console;
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.context.SecurityContextHolderStrategy;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
-import reactor.core.publisher.Mono;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("")
 public class HomeController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
 
 	@Autowired
 	private UserService userService;
@@ -142,9 +125,13 @@ public class HomeController {
 		user.setActive("true");
 		Users u = userService.saveUser(user);
 		
+		 
+		
 
 		if (u != null) {
 			String message = "Register successfully";
+			logger.info("Register successfully");
+		     logger.debug("Register successfully");
 			return ResponseEntity.ok(message);
 
 		} else {

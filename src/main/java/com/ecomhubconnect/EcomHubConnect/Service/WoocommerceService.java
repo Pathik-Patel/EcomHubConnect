@@ -1,10 +1,20 @@
 package com.ecomhubconnect.EcomHubConnect.Service;
 
 import java.sql.Timestamp;
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.trace.SpanContext;
+import io.opentelemetry.context.Context;
+import io.opentelemetry.context.Scope;
+import io.opentelemetry.context.propagation.TextMapSetter;
+import io.opentelemetry.api.GlobalOpenTelemetry;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +26,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.ecomhubconnect.EcomHubConnect.Config.AppException;
+import com.ecomhubconnect.EcomHubConnect.Controller.HomeController;
 import com.ecomhubconnect.EcomHubConnect.Entity.OrderedProducts;
 import com.ecomhubconnect.EcomHubConnect.Entity.Orders;
 import com.ecomhubconnect.EcomHubConnect.Entity.Stores;
@@ -29,6 +40,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class WoocommerceService {
+	
+	private final WebClient webClient;
+
+    // Let Spring inject the WebClient
+    public WoocommerceService(WebClient webClient) {
+        this.webClient = webClient;
+    }
+	
+	private static final Logger logger = LoggerFactory.getLogger(WoocommerceService.class);
 
 	@Autowired
 	private StoreRepository storesRepository;
@@ -72,6 +92,9 @@ public class WoocommerceService {
 	}
 
 	public void syncOrders(int storeId) {
+		
+		logger.info("Came into SyncOrders");
+	    
 
 		Optional<Stores> storeOptional = storesRepository.findById(storeId);
 
@@ -94,10 +117,12 @@ public class WoocommerceService {
 				lastModifiedDate = latestOrder.getLastmodifiedDate().toLocalDateTime();
 			}
 		}
+		
 
-		String url = "http://127.0.0.1:8000/hello";
-		WebClient webClient = WebClient.builder().baseUrl(url)
-				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).build();
+		String url = "/hello";
+//		WebClient webClient = WebClient.builder().baseUrl(url)
+//				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+//				.build();
 
 		String requestBody = lastModifiedDate != null
 				? "{\"consumerKey\":\"" + store.getConsumerKey() + "\",\"domain\":\"" + store.getDomain()
@@ -224,6 +249,8 @@ public class WoocommerceService {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		
+		
 	}
 
 }
