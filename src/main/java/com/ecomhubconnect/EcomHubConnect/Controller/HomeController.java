@@ -13,6 +13,9 @@ import com.ecomhubconnect.EcomHubConnect.Repo.UserRepository;
 import com.ecomhubconnect.EcomHubConnect.Service.UserService;
 import com.ecomhubconnect.EcomHubConnect.Session.InMemorySessionRegistry;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -38,6 +41,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
+@Tag(name = "Home", description = "User Related and Primary Operations")
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("")
 public class HomeController {
@@ -119,6 +123,7 @@ public class HomeController {
 		}
     }
 
+	@Operation(summary = "To add new user")
 	@PostMapping("/saveUser")
 	public ResponseEntity<String> saveUser(@RequestBody Users user, HttpSession session, Model m) {
 

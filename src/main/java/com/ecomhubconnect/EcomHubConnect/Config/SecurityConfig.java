@@ -65,7 +65,10 @@ public class SecurityConfig {
 	{
 		http.csrf().disable()
         .authorizeHttpRequests()
-        .requestMatchers("/logout","/login","/saveUser").permitAll()
+        .requestMatchers("/logout","/login","/saveUser","/swagger-ui/**",
+                "/v3/api-docs/**",
+                "/swagger-ui.html",
+                "/api-docs/**").permitAll()
         .anyRequest().authenticated();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
 		http.logout().
