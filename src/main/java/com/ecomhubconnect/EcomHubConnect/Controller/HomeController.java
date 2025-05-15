@@ -10,6 +10,7 @@ import com.ecomhubconnect.EcomHubConnect.Dto.ResponseDTO;
 //import com.ecomhubconnect.EcomHubConnect.Entity.User;
 import com.ecomhubconnect.EcomHubConnect.Entity.Users;
 import com.ecomhubconnect.EcomHubConnect.Repo.UserRepository;
+import com.ecomhubconnect.EcomHubConnect.Service.MessageProducer;
 import com.ecomhubconnect.EcomHubConnect.Service.UserService;
 import com.ecomhubconnect.EcomHubConnect.Session.InMemorySessionRegistry;
 
@@ -145,5 +146,13 @@ public class HomeController {
 		}
 	   
 	}
+	@Autowired
+	private  MessageProducer messageProducer;
+
+    @PostMapping("/sendMessage")
+    public String publishMessage(@RequestBody String message) {
+        messageProducer.sendMessage(message);
+        return "Message sent to RabbitMQ!";
+    }
 
 }

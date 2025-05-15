@@ -1,3 +1,4 @@
+version: '3.8'
 
 services:
   mysql:
@@ -23,7 +24,7 @@ services:
       MYSQL_ROOT_PASSWORD: secret
     depends_on:
       - mysql
-  
+
   wordpress:
     image: wordpress:latest
     container_name: wordpress
@@ -38,7 +39,17 @@ services:
     volumes:
       - wordpress_data:/var/www/html
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"    # RabbitMQ communication port
+      - "15672:15672"  # RabbitMQ Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
 volumes:
   mysql_data:
   wordpress_data:
-
