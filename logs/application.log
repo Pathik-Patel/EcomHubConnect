@@ -1,567 +1,92 @@
-2025-05-14 23:05:16 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Starting EcomHubConnectApplication using Java 17.0.10 with PID 3120 (/Users/rashminpatel/Desktop/Projects/EcomHubConnect/target/classes started by rashminpatel in /Users/rashminpatel/Desktop/Projects/EcomHubConnect)
-2025-05-14 23:05:16 INFO  [traceId=,
+2025-05-15 14:47:36 INFO  [traceId=,
+				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Starting EcomHubConnectApplication using Java 17.0.10 with PID 9355 (/Users/rashminpatel/Desktop/Projects/EcomHubConnect/target/classes started by rashminpatel in /Users/rashminpatel/Desktop/Projects/EcomHubConnect)
+2025-05-15 14:47:36 INFO  [traceId=,
 				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - No active profile set, falling back to 1 default profile: "default"
-2025-05-14 23:05:16 INFO  [traceId=,
+2025-05-15 14:47:37 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-05-14 23:05:16 INFO  [traceId=,
+2025-05-15 14:47:37 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-05-14 23:05:21 INFO  [traceId=,
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-15 14:47:40 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-05-14 23:05:22 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 657 ms. Found 4 JPA repository interfaces.
-2025-05-14 23:05:24 INFO  [traceId=,
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 501 ms. Found 4 JPA repository interfaces.
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecomhubconnect.EcomHubConnect.Repo.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecomhubconnect.EcomHubConnect.Repo.OrderedProductsRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecomhubconnect.EcomHubConnect.Repo.StoreRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecomhubconnect.EcomHubConnect.Repo.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-05-15 14:47:40 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+2025-05-15 14:47:42 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-05-14 23:05:24 INFO  [traceId=,
+2025-05-15 14:47:42 INFO  [traceId=,
 				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:05:24 INFO  [traceId=,
+2025-05-15 14:47:42 INFO  [traceId=,
 				spanId=] [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-05-14 23:05:24 INFO  [traceId=,
+2025-05-15 14:47:42 INFO  [traceId=,
 				spanId=] [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
-2025-05-14 23:05:24 INFO  [traceId=,
+2025-05-15 14:47:43 INFO  [traceId=,
 				spanId=] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-05-14 23:05:24 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 7738 ms
-2025-05-14 23:05:25 INFO  [traceId=,
+2025-05-15 14:47:43 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5966 ms
+2025-05-15 14:47:44 INFO  [traceId=,
 				spanId=] [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-05-14 23:05:25 INFO  [traceId=,
+2025-05-15 14:47:44 INFO  [traceId=,
 				spanId=] [restartedMain] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
-2025-05-14 23:05:26 INFO  [traceId=,
+2025-05-15 14:47:44 INFO  [traceId=,
 				spanId=] [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-05-14 23:05:26 INFO  [traceId=,
+2025-05-15 14:47:44 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-05-14 23:05:26 INFO  [traceId=,
+2025-05-15 14:47:44 INFO  [traceId=,
 				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-05-14 23:05:27 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3861b5a2
-2025-05-14 23:05:27 INFO  [traceId=,
+2025-05-15 14:47:45 INFO  [traceId=,
+				spanId=] [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7bc29ff9
+2025-05-15 14:47:45 INFO  [traceId=,
 				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-05-14 23:05:27 WARN  [traceId=,
+2025-05-15 14:47:45 WARN  [traceId=,
 				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-05-14 23:05:27 WARN  [traceId=,
+2025-05-15 14:47:45 WARN  [traceId=,
 				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-05-14 23:05:30 INFO  [traceId=,
+2025-05-15 14:47:47 INFO  [traceId=,
 				spanId=] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-05-14 23:05:30 INFO  [traceId=,
+2025-05-15 14:47:48 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:05:31 WARN  [traceId=,
+2025-05-15 14:47:49 WARN  [traceId=,
 				spanId=] [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-05-14 23:05:34 INFO  [traceId=,
+2025-05-15 14:47:51 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-05-14 23:05:36 INFO  [traceId=,
+2025-05-15 14:47:53 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-2025-05-14 23:05:36 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2b315782, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@37670ce6, org.springframework.security.web.context.SecurityContextHolderFilter@a48e63d, org.springframework.security.web.header.HeaderWriterFilter@1223a93b, org.springframework.web.filter.CorsFilter@504e367a, org.springframework.security.web.authentication.logout.LogoutFilter@5828fd1e, com.ecomhubconnect.EcomHubConnect.Session.SessionFilter@3c947119, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9206a35, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b5ef354, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@52f19000, org.springframework.security.web.session.SessionManagementFilter@66a1c2ba, org.springframework.security.web.access.ExceptionTranslationFilter@578a921f, org.springframework.security.web.access.intercept.AuthorizationFilter@596c8a4c]
-2025-05-14 23:05:38 INFO  [traceId=,
+2025-05-15 14:47:53 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@64a49a1f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ea42558, org.springframework.security.web.context.SecurityContextHolderFilter@686190a3, org.springframework.security.web.header.HeaderWriterFilter@62458507, org.springframework.web.filter.CorsFilter@736b0e62, org.springframework.security.web.authentication.logout.LogoutFilter@5a6e3890, com.ecomhubconnect.EcomHubConnect.Session.SessionFilter@1ea63ac4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3fd098af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@fbdc2a9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@75920f8f, org.springframework.security.web.session.SessionManagementFilter@4060ba20, org.springframework.security.web.access.ExceptionTranslationFilter@6dea71b0, org.springframework.security.web.access.intercept.AuthorizationFilter@17e2d76f]
+2025-05-15 14:47:54 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2025-05-14 23:05:38 INFO  [traceId=,
+2025-05-15 14:47:55 INFO  [traceId=,
 				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:05:38 INFO  [traceId=,
+2025-05-15 14:47:55 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2025-05-14 23:05:38 INFO  [traceId=,
+2025-05-15 14:47:55 INFO  [traceId=,
 				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
-2025-05-14 23:05:38 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#765cb847:0/SimpleConnection@2e147cb6 [delegate=amqp://guest@127.0.0.1:5672/, localPort=51775]
-2025-05-14 23:05:38 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Started EcomHubConnectApplication in 23.51 seconds (process running for 25.122)
-2025-05-14 23:07:29 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-05-14 23:07:29 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-05-14 23:07:29 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 13 ms
-2025-05-14 23:07:33 INFO  [traceId=932c4202762e9f115521f8687bdd7fca,
-				spanId=1c6fa55731600ce9] [http-nio-8080-exec-7] o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2125 ms
-2025-05-14 23:09:08 INFO  [traceId=,
-				spanId=] [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-05-14 23:09:08 INFO  [traceId=,
+2025-05-15 14:47:55 INFO  [traceId=,
+				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#3f120faa:0/SimpleConnection@391679c0 [delegate=amqp://guest@127.0.0.1:5672/, localPort=61499]
+2025-05-15 14:47:55 INFO  [traceId=,
+				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Started EcomHubConnectApplication in 20.141 seconds (process running for 22.21)
+2025-05-15 14:48:45 INFO  [traceId=,
 				spanId=] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
-2025-05-14 23:09:09 INFO  [traceId=,
+2025-05-15 14:48:45 INFO  [traceId=,
 				spanId=] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
-2025-05-14 23:09:09 INFO  [traceId=,
-				spanId=] [Thread-9] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:09:09 INFO  [traceId=,
-				spanId=] [Thread-9] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:09:09 INFO  [traceId=,
-				spanId=] [Thread-9] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2025-05-14 23:09:09 INFO  [traceId=,
-				spanId=] [Thread-9] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2025-05-14 23:09:10 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Starting EcomHubConnectApplication using Java 17.0.10 with PID 3120 (/Users/rashminpatel/Desktop/Projects/EcomHubConnect/target/classes started by rashminpatel in /Users/rashminpatel/Desktop/Projects/EcomHubConnect)
-2025-05-14 23:09:10 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - No active profile set, falling back to 1 default profile: "default"
-2025-05-14 23:09:11 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-05-14 23:09:11 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 60 ms. Found 4 JPA repository interfaces.
-2025-05-14 23:09:12 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-05-14 23:09:12 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:09:12 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-05-14 23:09:12 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
-2025-05-14 23:09:12 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-05-14 23:09:12 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2603 ms
-2025-05-14 23:09:13 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-05-14 23:09:13 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-05-14 23:09:13 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-05-14 23:09:13 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2025-05-14 23:09:13 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@a5f8e35
-2025-05-14 23:09:13 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2025-05-14 23:09:13 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-05-14 23:09:13 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-05-14 23:09:14 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-05-14 23:09:14 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:09:14 WARN  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-05-14 23:09:15 WARN  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Injection of autowired dependencies failed
-2025-05-14 23:09:15 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:09:15 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2025-05-14 23:09:15 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2025-05-14 23:09:15 INFO  [traceId=,
-				spanId=] [restartedMain] i.o.sdk.trace.SdkTracerProvider - Calling shutdown() multiple times.
-2025-05-14 23:09:15 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardService - Stopping service [Tomcat]
-2025-05-14 23:09:15 WARN  [traceId=,
-				spanId=] [restartedMain] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [BatchSpanProcessor_WorkerThread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@17.0.10/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@17.0.10/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
- java.base@17.0.10/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
- java.base@17.0.10/java.util.concurrent.ArrayBlockingQueue.poll(ArrayBlockingQueue.java:435)
- app//io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:253)
- java.base@17.0.10/java.lang.Thread.run(Thread.java:842)
-2025-05-14 23:09:15 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-05-14 23:09:15 ERROR [traceId=,
-				spanId=] [restartedMain] o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Injection of autowired dependencies failed
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
-	at com.ecomhubconnect.EcomHubConnect.EcomHubConnectApplication.main(EcomHubConnectApplication.java:12)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: java.lang.RuntimeException: Could not postProcess org.springframework.security.config.annotation.web.builders.WebSecurity@735b4a7f of type class org.springframework.security.config.annotation.web.builders.WebSecurity
-	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.postProcess(AutowireBeanFactoryObjectPostProcessor.java:69)
-	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.setFilterChainProxySecurityConfigurer(WebSecurityConfiguration.java:148)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:853)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
-	... 22 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospectorRequestTransformer': Cannot resolve reference to bean 'mvcHandlerMappingIntrospector' while setting constructor argument
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:685)
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:203)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1355)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:224)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1323)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1284)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:486)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory$1.getIfUnique(DefaultListableBeanFactory.java:438)
-	at org.springframework.security.config.annotation.web.builders.WebSecurity.setApplicationContext(WebSecurity.java:397)
-	at org.springframework.context.support.ApplicationContextAwareProcessor.invokeAwareInterfaces(ApplicationContextAwareProcessor.java:110)
-	at org.springframework.context.support.ApplicationContextAwareProcessor.postProcessBeforeInitialization(ApplicationContextAwareProcessor.java:85)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1778)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:412)
-	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.postProcess(AutowireBeanFactoryObjectPostProcessor.java:65)
-	... 30 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospector' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'homeController' method 
-com.ecomhubconnect.EcomHubConnect.Controller.HomeController#saveUser(Users, HttpSession, Model)
-to {POST [/saveUser]}: There is already 'homeController' bean method
-com.ecomhubconnect.EcomHubConnect.Controller.HomeController#publishMessage(String) mapped.
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
-	... 52 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'homeController' method 
-com.ecomhubconnect.EcomHubConnect.Controller.HomeController#saveUser(Users, HttpSession, Model)
-to {POST [/saveUser]}: There is already 'homeController' bean method
-com.ecomhubconnect.EcomHubConnect.Controller.HomeController#publishMessage(String) mapped.
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
-	at org.springframework.context.support.AbstractApplicationContext.getBeansOfType(AbstractApplicationContext.java:1385)
-	at org.springframework.beans.factory.BeanFactoryUtils.beansOfTypeIncludingAncestors(BeanFactoryUtils.java:368)
-	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.initHandlerMappings(HandlerMappingIntrospector.java:130)
-	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.afterPropertiesSet(HandlerMappingIntrospector.java:118)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
-	... 59 common frames omitted
-Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'homeController' method 
-com.ecomhubconnect.EcomHubConnect.Controller.HomeController#saveUser(Users, HttpSession, Model)
-to {POST [/saveUser]}: There is already 'homeController' bean method
-com.ecomhubconnect.EcomHubConnect.Controller.HomeController#publishMessage(String) mapped.
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:672)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:634)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:508)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:84)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
-	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
-	... 72 common frames omitted
-2025-05-14 23:09:17 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Starting EcomHubConnectApplication using Java 17.0.10 with PID 3120 (/Users/rashminpatel/Desktop/Projects/EcomHubConnect/target/classes started by rashminpatel in /Users/rashminpatel/Desktop/Projects/EcomHubConnect)
-2025-05-14 23:09:17 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - No active profile set, falling back to 1 default profile: "default"
-2025-05-14 23:09:18 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-05-14 23:09:18 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 4 JPA repository interfaces.
-2025-05-14 23:09:18 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-05-14 23:09:18 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:09:18 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-05-14 23:09:18 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
-2025-05-14 23:09:18 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-05-14 23:09:18 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1605 ms
-2025-05-14 23:09:19 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-05-14 23:09:19 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-05-14 23:09:19 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-05-14 23:09:19 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
-2025-05-14 23:09:19 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ae65443
-2025-05-14 23:09:19 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
-2025-05-14 23:09:19 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-05-14 23:09:19 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-05-14 23:09:20 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-05-14 23:09:20 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:09:20 WARN  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2dd51731, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3f5dc4bd, org.springframework.security.web.context.SecurityContextHolderFilter@e87564b, org.springframework.security.web.header.HeaderWriterFilter@1c1c7e7, org.springframework.web.filter.CorsFilter@c6a4821, org.springframework.security.web.authentication.logout.LogoutFilter@6305f84c, com.ecomhubconnect.EcomHubConnect.Session.SessionFilter@39cacfd4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@13402c79, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d6e5719, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@17b4cdc8, org.springframework.security.web.session.SessionManagementFilter@47f99f52, org.springframework.security.web.access.ExceptionTranslationFilter@2ac97934, org.springframework.security.web.access.intercept.AuthorizationFilter@7afd1cfa]
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#779bd40:0/SimpleConnection@3186d670 [delegate=amqp://guest@127.0.0.1:5672/, localPort=51869]
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Started EcomHubConnectApplication in 4.655 seconds (process running for 248.106)
-2025-05-14 23:09:21 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
-2025-05-14 23:09:26 INFO  [traceId=,
-				spanId=] [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
-2025-05-14 23:09:26 INFO  [traceId=,
-				spanId=] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
-2025-05-14 23:09:26 INFO  [traceId=,
-				spanId=] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
-2025-05-14 23:09:26 INFO  [traceId=,
-				spanId=] [Thread-11] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:09:26 INFO  [traceId=,
-				spanId=] [Thread-11] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:09:26 INFO  [traceId=,
-				spanId=] [Thread-11] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
-2025-05-14 23:09:26 INFO  [traceId=,
-				spanId=] [Thread-11] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
-2025-05-14 23:09:27 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Starting EcomHubConnectApplication using Java 17.0.10 with PID 3120 (/Users/rashminpatel/Desktop/Projects/EcomHubConnect/target/classes started by rashminpatel in /Users/rashminpatel/Desktop/Projects/EcomHubConnect)
-2025-05-14 23:09:27 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - No active profile set, falling back to 1 default profile: "default"
-2025-05-14 23:09:27 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-05-14 23:09:27 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 4 JPA repository interfaces.
-2025-05-14 23:09:27 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 951 ms
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2ad3fc10
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
-2025-05-14 23:09:28 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-05-14 23:09:28 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-05-14 23:09:28 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:09:28 WARN  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@58c4b9f5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@a8b06bc, org.springframework.security.web.context.SecurityContextHolderFilter@41a917ff, org.springframework.security.web.header.HeaderWriterFilter@480e7d40, org.springframework.web.filter.CorsFilter@72c85c6, org.springframework.security.web.authentication.logout.LogoutFilter@eccf3cd, com.ecomhubconnect.EcomHubConnect.Session.SessionFilter@1313e002, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ee0968d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ea97bed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5f6c3615, org.springframework.security.web.session.SessionManagementFilter@1afb42e8, org.springframework.security.web.access.ExceptionTranslationFilter@3190a9e5, org.springframework.security.web.access.intercept.AuthorizationFilter@45d2f9e8]
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#5bdd2cb9:0/SimpleConnection@53f75733 [delegate=amqp://guest@127.0.0.1:5672/, localPort=51900]
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Started EcomHubConnectApplication in 2.807 seconds (process running for 256.116)
-2025-05-14 23:09:29 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
-2025-05-14 23:09:39 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-05-14 23:09:39 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-05-14 23:09:39 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2025-05-14 23:09:41 INFO  [traceId=05de8aae21774aaf8950e17cab31531c,
-				spanId=3b35b7b200b4add2] [http-nio-8080-exec-9] o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 617 ms
-2025-05-14 23:10:00 INFO  [traceId=69c4d77ce1858e47b7a0ea0a17a723b0,
-				spanId=3209b53c2ad98c17] [http-nio-8080-exec-6] c.e.E.Service.MessageProducer - Sending message: "Pathya ae moklyo"
-2025-05-14 23:10:00 INFO  [traceId=,
-				spanId=] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] c.e.E.Service.MessageConsumer - Received message: "Pathya ae moklyo"
-2025-05-14 23:11:13 INFO  [traceId=,
-				spanId=] [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-05-14 23:11:13 INFO  [traceId=,
-				spanId=] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
-2025-05-14 23:11:14 INFO  [traceId=,
-				spanId=] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
-2025-05-14 23:11:14 INFO  [traceId=,
-				spanId=] [Thread-26] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:11:14 INFO  [traceId=,
-				spanId=] [Thread-26] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:11:14 INFO  [traceId=,
-				spanId=] [Thread-26] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
-2025-05-14 23:11:14 INFO  [traceId=,
-				spanId=] [Thread-26] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
-2025-05-14 23:11:14 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Starting EcomHubConnectApplication using Java 17.0.10 with PID 3120 (/Users/rashminpatel/Desktop/Projects/EcomHubConnect/target/classes started by rashminpatel in /Users/rashminpatel/Desktop/Projects/EcomHubConnect)
-2025-05-14 23:11:14 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - No active profile set, falling back to 1 default profile: "default"
-2025-05-14 23:11:15 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-05-14 23:11:15 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 4 JPA repository interfaces.
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1341 ms
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6654b0f0
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
-2025-05-14 23:11:16 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-05-14 23:11:16 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-05-14 23:11:16 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:11:17 WARN  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-05-14 23:11:17 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-2025-05-14 23:11:17 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b8a9dbf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@683f0424, org.springframework.security.web.context.SecurityContextHolderFilter@60178d91, org.springframework.security.web.header.HeaderWriterFilter@3a842c2b, org.springframework.web.filter.CorsFilter@303eb50d, org.springframework.security.web.authentication.logout.LogoutFilter@42bad322, com.ecomhubconnect.EcomHubConnect.Session.SessionFilter@43df770f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2cfe7a4e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a448ffd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e9ab2cc, org.springframework.security.web.session.SessionManagementFilter@4c1872aa, org.springframework.security.web.access.ExceptionTranslationFilter@978659f, org.springframework.security.web.access.intercept.AuthorizationFilter@28a166ec]
-2025-05-14 23:11:17 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2025-05-14 23:11:17 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:11:17 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2025-05-14 23:11:17 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Started EcomHubConnectApplication in 3.12 seconds (process running for 364.23)
-2025-05-14 23:11:17 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
-2025-05-14 23:11:32 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-05-14 23:11:32 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-05-14 23:11:32 INFO  [traceId=,
-				spanId=] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2025-05-14 23:11:32 INFO  [traceId=f70943bee46189700ac9e4133e903631,
-				spanId=6e83fa068a632b80] [http-nio-8080-exec-1] c.e.E.Service.MessageProducer - Sending message: "Pathya ae moklyo"
-2025-05-14 23:11:32 INFO  [traceId=f70943bee46189700ac9e4133e903631,
-				spanId=6e83fa068a632b80] [http-nio-8080-exec-1] o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
-2025-05-14 23:11:32 INFO  [traceId=f70943bee46189700ac9e4133e903631,
-				spanId=6e83fa068a632b80] [http-nio-8080-exec-1] o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#7c80fdec:0/SimpleConnection@5c7d708d [delegate=amqp://guest@127.0.0.1:5672/, localPort=51979]
-2025-05-14 23:12:05 INFO  [traceId=,
-				spanId=] [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-05-14 23:12:05 INFO  [traceId=,
-				spanId=] [Thread-34] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:12:05 INFO  [traceId=,
-				spanId=] [Thread-34] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:12:05 INFO  [traceId=,
-				spanId=] [Thread-34] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
-2025-05-14 23:12:05 INFO  [traceId=,
-				spanId=] [Thread-34] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
-2025-05-14 23:12:06 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Starting EcomHubConnectApplication using Java 17.0.10 with PID 3120 (/Users/rashminpatel/Desktop/Projects/EcomHubConnect/target/classes started by rashminpatel in /Users/rashminpatel/Desktop/Projects/EcomHubConnect)
-2025-05-14 23:12:06 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - No active profile set, falling back to 1 default profile: "default"
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 4 JPA repository interfaces.
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1277 ms
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Starting...
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5467ff6f
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Start completed.
-2025-05-14 23:12:07 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-05-14 23:12:07 WARN  [traceId=,
-				spanId=] [restartedMain] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-05-14 23:12:07 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-05-14 23:12:08 WARN  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-05-14 23:12:08 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-2025-05-14 23:12:08 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5eaa216b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ef4e8b1, org.springframework.security.web.context.SecurityContextHolderFilter@48a5a5f7, org.springframework.security.web.header.HeaderWriterFilter@44eb0abf, org.springframework.web.filter.CorsFilter@55bb04b7, org.springframework.security.web.authentication.logout.LogoutFilter@48ae6b75, com.ecomhubconnect.EcomHubConnect.Session.SessionFilter@1768d055, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@25905e5c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@12b11a0f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@15af0f59, org.springframework.security.web.session.SessionManagementFilter@3b80309b, org.springframework.security.web.access.ExceptionTranslationFilter@7750b589, org.springframework.security.web.access.intercept.AuthorizationFilter@2b1964f3]
-2025-05-14 23:12:09 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2025-05-14 23:12:09 INFO  [traceId=,
-				spanId=] [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2025-05-14 23:12:09 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2025-05-14 23:12:09 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
-2025-05-14 23:12:09 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#38a42de4:0/SimpleConnection@21552891 [delegate=amqp://guest@127.0.0.1:5672/, localPort=51992]
-2025-05-14 23:12:09 INFO  [traceId=,
-				spanId=] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] c.e.E.Service.MessageConsumer - Received message: "Pathya ae moklyo"
-2025-05-14 23:12:09 INFO  [traceId=,
-				spanId=] [restartedMain] c.e.E.EcomHubConnectApplication - Started EcomHubConnectApplication in 3.155 seconds (process running for 415.417)
-2025-05-14 23:12:09 INFO  [traceId=,
-				spanId=] [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-05-15 14:48:45 INFO  [traceId=,
+				spanId=] [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-15 14:48:45 INFO  [traceId=,
+				spanId=] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-15 14:48:45 INFO  [traceId=,
+				spanId=] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
